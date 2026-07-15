@@ -11,7 +11,7 @@ function Login() {
   const [message, setMessage] = useState("");
 
   function login() {
-    fetch("http://localhost:8080/login", {
+    fetch(import.meta.env.VITE_BACKEND_UR + "/login", {
       method: "POST",
       body: JSON.stringify(loginData),
       headers: {

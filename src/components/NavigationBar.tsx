@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 
 function NavigationBar() {
   useLocation();
-  const isLoggedIn = localStorage.getItem("token") !== null;
+  const isLoggedIn = sessionStorage.getItem("token") !== null;
 
   return (
     <div>

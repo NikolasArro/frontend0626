@@ -30,11 +30,11 @@ function EditProduct() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/categories")
+    fetch(import.meta.env.VITE_BACKEND_UR + "/categories")
       .then(res => res.json())
       .then(json => setCategories(json))
 
-    fetch("http://localhost:8080/products/" + id)
+    fetch(import.meta.env.VITE_BACKEND_UR + "/products/" + id)
       .then(res => res.json())
       .then(json => setProduct(json))
   }, [id]);
@@ -49,7 +49,7 @@ function EditProduct() {
   }
 
   function editProduct() {
-    fetch("http://localhost:8080/products", {
+    fetch(import.meta.env.VITE_BACKEND_UR + "/products", {
       method: "PUT",
       body: JSON.stringify(product),
       headers: {

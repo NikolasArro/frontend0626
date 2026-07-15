@@ -5,7 +5,7 @@ function ManageCategories() {
     const [newCategory, setNewCategory] = useState<any>({name: ""});
 
     useEffect(() => {
-    fetch("http://localhost:8080/categories")
+    fetch(import.meta.env.VITE_BACKEND_UR + "/categories")
         .then(res => res.json())
         .then(json => setCategories(json))
     }, []);
@@ -13,17 +13,18 @@ function ManageCategories() {
     // TODO: table
 
     function deleteProduct(id: number) {
-      fetch("http://localhost:8080/categories/" + id, {method: "DELETE"})
+      fetch(import.meta.env.VITE_BACKEND_UR + "/categories/" + id, {method: "DELETE"})
         .then(res => res.json())
         .then(json => setCategories(json))
     }
 
     function addCategory() {
-        fetch("http://localhost:8080/categories", {
+        fetch(import.meta.env.VITE_BACKEND_UR + "/categories", {
           method: "POST",
           body: JSON.stringify(newCategory), // TODO: body on: {},
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + sessionStorage.getItem("token")
           }
         })
           .then(res => res.json())

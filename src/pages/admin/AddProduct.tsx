@@ -27,7 +27,7 @@ function AddProduct() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/categories")
+    fetch(import.meta.env.VITE_BACKEND_UR + "/categories")
       .then(res => res.json())
       .then(json => setCategories(json))
   }, []);
@@ -42,11 +42,12 @@ function AddProduct() {
   }
 
   function addProduct() {
-    fetch("http://localhost:8080/products", {
+    fetch(import.meta.env.VITE_BACKEND_UR + "/products", {
       method: "POST",
       body: JSON.stringify(newProduct),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + sessionStorage.getItem("token")
       }
     })
       .then(res => {

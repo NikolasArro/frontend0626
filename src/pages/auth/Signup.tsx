@@ -16,11 +16,12 @@ function Signup() {
     street: "",
     streetNumber: "",
     postalIndex: "",
+    role: ""
   });
   const [message, setMessage] = useState("");
 
   function signup() {
-    fetch("http://localhost:8080/signup", {
+    fetch(import.meta.env.VITE_BACKEND_UR + "/signup", {
       method: "POST",
       body: JSON.stringify(person),
       headers: {
@@ -122,6 +123,22 @@ function Signup() {
         onChange={(e) => setPerson({...person, postalIndex: e.target.value})}
         type="text"
       /> <br />
+
+      <label>Roll (for testing)</label> <br />
+      {/* <input
+        value={person.role}
+        onChange={(e) => setPerson({...person, firstName: e.target.value})}
+        type="text"
+      /> */}
+      <select
+        value={person.role}
+        onChange={(e) => setPerson({...person, role: e.target.value})}
+      >
+        <option value="0">Customer</option>
+        <option value="1">Admin</option>
+        <option value="2">Superadmin</option>
+
+      </select>
 
       <button onClick={() => signup()}>Registreeru</button>
       <div>{message}</div>
