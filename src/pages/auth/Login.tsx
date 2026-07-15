@@ -11,7 +11,7 @@ function Login() {
   const [message, setMessage] = useState("");
 
   function login() {
-    fetch(import.meta.env.VITE_BACKEND_UR + "/login", {
+    fetch(import.meta.env.VITE_BACKEND_URL + "/login", {
       method: "POST",
       body: JSON.stringify(loginData),
       headers: {

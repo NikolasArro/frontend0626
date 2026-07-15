@@ -5,7 +5,7 @@ function ManageCategories() {
     const [newCategory, setNewCategory] = useState<any>({name: ""});
 
     useEffect(() => {
-    fetch(import.meta.env.VITE_BACKEND_UR + "/categories")
+    fetch(import.meta.env.VITE_BACKEND_URL + "/categories")
         .then(res => res.json())
         .then(json => setCategories(json))
     }, []);
@@ -13,13 +13,13 @@ function ManageCategories() {
     // TODO: table
 
     function deleteProduct(id: number) {
-      fetch(import.meta.env.VITE_BACKEND_UR + "/categories/" + id, {method: "DELETE"})
+      fetch(import.meta.env.VITE_BACKEND_URL + "/categories/" + id, {method: "DELETE"})
         .then(res => res.json())
         .then(json => setCategories(json))
     }
 
     function addCategory() {
-        fetch(import.meta.env.VITE_BACKEND_UR + "/categories", {
+        fetch(import.meta.env.VITE_BACKEND_URL + "/categories", {
           method: "POST",
           body: JSON.stringify(newCategory), // TODO: body on: {},
           headers: {

@@ -5,7 +5,7 @@ function ManageProducts() {
     const [products, setProducts] = useState<any[]>([]);
 
     useEffect(() => {
-    fetch(import.meta.env.VITE_BACKEND_UR + "/products/all")
+    fetch(import.meta.env.VITE_BACKEND_URL + "/products/all")
         .then(res => res.json())
         .then(json => setProducts(json))
     }, []);
@@ -13,7 +13,7 @@ function ManageProducts() {
     // TODO: table
 
     function deleteProduct(id: number) {
-      fetch(import.meta.env.VITE_BACKEND_UR + "/products/" + id, {method: "DELETE"})
+      fetch(import.meta.env.VITE_BACKEND_URL + "/products/" + id, {method: "DELETE"})
         .then(res => res.json())
         .then(json => setProducts(json))
     }

@@ -21,7 +21,7 @@ function Signup() {
   const [message, setMessage] = useState("");
 
   function signup() {
-    fetch(import.meta.env.VITE_BACKEND_UR + "/signup", {
+    fetch(import.meta.env.VITE_BACKEND_URL + "/signup", {
       method: "POST",
       body: JSON.stringify(person),
       headers: {
