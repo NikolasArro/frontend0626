@@ -1,19 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 function NavigationBar() {
+  useLocation();
+  const isLoggedIn = localStorage.getItem("token") !== null;
+
   return (
     <div>
         <Link to="/">
             <button>Avalehele</button>
         </Link>
         
-        <Link to="/cart">
-            <button>Ostukorv</button>
-        </Link>
+        {isLoggedIn && 
+          <Link to="/cart">
+              <button>Ostukorv</button>
+          </Link>}
         
-        <Link to="/admin">
-            <button>Admin</button>
-        </Link>
+        {isLoggedIn && 
+          <Link to="/admin">
+              <button>Admin</button>
+          </Link>}
         
         <Link to="/login">
             <button>Logi sisse</button>
@@ -23,13 +28,15 @@ function NavigationBar() {
             <button>Registreeru</button>
         </Link>
         
-        <Link to="/my-orders">
-            <button>Minu tellimused</button>
-        </Link>
+        {isLoggedIn && 
+          <Link to="/my-orders">
+              <button>Minu tellimused</button>
+          </Link>}
         
-        <Link to="/profile">
-            <button>Profiil</button>
-        </Link>
+        {isLoggedIn && 
+          <Link to="/profile">
+              <button>Profiil</button>
+          </Link>}
     </div>
   )
 }
