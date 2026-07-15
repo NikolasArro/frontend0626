@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 function ProductDetails() {
-const {id} = useParams(); // urli muutuja
+// const {id} = useParams(); // urli muutuja
 
   return (
     <div>ProductDetails</div>
